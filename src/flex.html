@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./output.css">
+ <title>FlexBox - Tailwind</title>
+</head>
+
+<body class="overflow-x-hidden">
+ <h1 class="text-3xl text-center p-2 bg-green-300">Responsives Cards</h1>
+
+ <div id="cards" class="cards">
+  <template id="template">
+   <figure class="card">
+    <img class="w-[180px]">
+    <div class="w-full max-xs:p-2 max-xs:flex-col max-xs:justify-center">
+     <figcaption class="text-xl text-center"></figcaption>
+     <h3 class="text-3xl text-center"></h3>
+    </div>
+   </figure>
+  </template>
+ </div>
+
+ <div id="back" class="w-screen h-fit p-2 mt-4 bg-slate-400">
+  <a href="./index.html" class="outline-none" tabindex="-1">
+   <button
+    class=" font-bold bg-gray-100 w-32 p-3 mt-4 mx-auto block rounded-md hover:bg-gray-200 active:bg-gray-300 border-4 border-gray-100 focus:bg-gray-200 outline-none">Home</button>
+  </a>
+ </div>
+
+ <script>
+  const $cards = document.querySelector('#cards'),
+   $template = document.querySelector('#template').content,
+   $fragment = document.createDocumentFragment();
+
+  (async () => {
+   const data = await fetch('https://dummyjson.com/products').then((res) => res.json())
+   data.products.forEach((prod) => {
+    $template.querySelector('img').setAttribute('src', prod.images[0]);
+    $template.querySelector('img').setAttribute('alt', prod.title);
+    $template.querySelector('figcaption').textContent = prod.title;
+    $template.querySelector('h3').textContent = prod.price;
+
+    const $clone = document.importNode($template, true);
+    $fragment.appendChild($clone);
+   });
+   $cards.appendChild($fragment);
+  })()
+
+
+
+
+
+ </script>
+</body>
+
+</html>

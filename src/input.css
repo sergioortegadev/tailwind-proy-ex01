@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .cards {
+    @apply xs:flex flex-wrap justify-around max-w-[1200px] mx-auto;
+  }
+  .card {
+    @apply flex p-1 border-b-2 border-gray-400 xs:flex-col xs:w-[13rem] xs:h-[23rem] xs:p-4 xs:m-2 xs:rounded-lg xs:bg-slate-100 xs:border-2 xs:border-transparent xs:hover:border-gray-300;
+  }
+}

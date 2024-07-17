@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./output.css">
+ <title>Login</title>
+</head>
+
+<body class="bg-blue-400">
+ <div id="login" class="bg-white w-80 mx-auto mt-12 rounded-lg p-8 border-4 border-transparent hover:border-slate-200">
+
+  <form action="" onsubmit="return confirm('ACCESS Denied')">
+   <input type="text" class="border border-gray-400 rounded-[4px] p-1 m-1 w-full outline-none focus:ring-2"
+    placeholder="Insert your name" autofocus required>
+
+   <input type="email" id="input-email"
+    class="border border-gray-400 rounded-[4px] p-1 m-1 w-full outline-none focus:ring-2 invalid:border-red-500 peer"
+    placeholder="Insert your email">
+   <p class="text-red-700 mb-2 px-2 hidden peer-invalid:block">email should have "@" and then domain with ".com" or
+    similar</p>
+
+   <input type="password" class="border border-gray-400 rounded-[4px] p-1 m-1 w-full outline-none focus:ring-2 "
+    placeholder="Insert your pass">
+
+   <input type="text" class="border border-gray-400 rounded-[4px] p-1 m-1 w-full disabled:bg-gray-300"
+    placeholder="ID-USER" disabled>
+
+   <input type="submit"
+    class="w-40 p-2 mx-auto mt-4 block bg-blue-400 border-4 rounded-lg border-blue-400 hover:bg-blue-500  active:bg-blue-600 outline-none focus:border-blue-400 focus:bg-blue-500"
+    value="Send">
+  </form>
+
+  <a href="./index.html" class="outline-none" tabindex="-1">
+   <button
+    class="w-40 p-2 mx-auto mt-2 block bg-gray-200  border-4 rounded-lg border-gray-200 hover:bg-gray-300 active:bg-gray-400 outline-none focus:border-gray-300 focus:bg-gray-400">Cancel</button>
+  </a>
+ </div>
+
+ <script>
+  const $inputEmail = document.querySelector('#input-email')
+  $inputEmail.addEventListener('focusout', () => {
+   $inputEmail.classList.add('peer')
+  })
+  $inputEmail.addEventListener('focus', () => {
+   $inputEmail.classList.remove('peer')
+  })
+
+ </script>
+</body>
+
+</html>

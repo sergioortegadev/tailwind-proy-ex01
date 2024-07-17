@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./output.css">
+ <title>Responsives cards</title>
+</head>
+
+<body class="overflow-x-hidden">
+ <h1 class="text-3xl text-center p-2 bg-green-300">Responsives Cards</h1>
+
+ <div id="cards" class="w-screen h-fit p-2 bg-slate-400">
+  <div id="card" class="border-2 border-green-300 rounded-lg p-4 w-full sm:w-96 landscape:border-blue-300 mx-auto mt-2">
+   <h2 class="text-center text-xl font-bold">Simpsons meme API</h2>
+   <img id="card-img">
+   <p class="text-center font-mono font-bold">API developed by Sergio Ortega dev</p>
+  </div>
+  <p class="text-center text-xl hidden md:max-lg:block">Esto aparece solo en md <br><small>» Entre 768 y
+    1024px «</small><br><code>md:max-lg:block</code></p>
+ </div>
+
+ <div class="w-screen h-fit p-2 mt-4 bg-slate-500">
+  <div id="outer-with" class="text-center font-bold bg-slate-300 w-48 p-2 mx-auto block rounded-2xl">
+  </div>
+  <button id="reload"
+   class="w-40 p-1 mx-auto mt-2 block bg-green-400 hover:bg-green-500 hover:border-green-400 border-4 border-transparent rounded-lg">Recalcular
+   ancho</button>
+ </div>
+
+ <div id="back" class="w-screen h-fit p-2 mt-4 bg-slate-400">
+  <a href="./index.html" class="outline-none" tabindex="-1">
+   <button
+    class=" font-bold bg-gray-100 w-32 p-3 mt-4 mx-auto block rounded-md hover:bg-gray-200 active:bg-gray-300 border-4 border-gray-100 focus:bg-gray-200 outline-none">Home</button>
+  </a>
+ </div>
+
+ <script>
+  const $card = document.querySelector('#card-img')
+  const fetchAPImeme = async () => {
+   const data = await fetch('https://api-dev-meme.onrender.com').then((res) => res.json());
+   const url = 'https://api-dev-meme.onrender.com' + await data.data.image
+   const alt = 'Simpsons meme API'
+
+   $card.setAttribute("src", url)
+   $card.setAttribute("alt", alt)
+  }
+  fetchAPImeme()
+
+  document.querySelector('#outer-with').innerHTML = `El ancho es de ${window.outerWidth} px`
+
+  document.querySelector('#reload').addEventListener('click', () => location.reload())
+ </script>
+
+</body>
+
+</html>
