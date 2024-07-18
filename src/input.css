@@ -9,4 +9,10 @@
   .card {
     @apply flex p-1 border-b-2 border-gray-400 xs:flex-col xs:w-[13rem] xs:h-[23rem] xs:p-4 xs:m-2 xs:rounded-lg xs:bg-slate-100 xs:border-2 xs:border-transparent xs:hover:border-gray-300;
   }
+  .cards-grid {
+    @apply max-w-[1200px] mx-auto my-1 grid gap-1 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3;
+  }
+  .card-grid {
+    @apply flex p-1 border-b-2 border-gray-400 xs:flex-col xs:items-center xs:bg-gray-300 xs:rounded-lg xs:border-2 xs:border-transparent xs:hover:border-gray-400;
+  }
 }

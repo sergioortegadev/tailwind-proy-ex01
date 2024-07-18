@@ -9,14 +9,24 @@
  <title>Institutional Site</title>
 </head>
 
-<body>
+<body class="dark:bg-slate-800 dark:text-white">
 
 
  <a href="./login.html">
   <button
    class="text-white bg-blue-400 border-4 border-transparent rounded-lg w-20 p-2 m-4 absolute top-10 right-0 hover:bg-blue-500 hover:border-blue-400">Login</button>
  </a>
- <h1 class="bg-main-color text-thi-color text-2xl p-2 font-black">Institutional Name</h1>
+ <div id="header" class="bg-main-color flex justify-between">
+  <h1 class=" text-thi-color text-2xl p-2 font-black">Institutional Name</h1>
+
+  <label class="inline-flex items-center cursor-pointer">
+   <input id="darkToggle" type="checkbox" value="" class="sr-only peer">
+   <div
+    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+   </div>
+   <span class="ms-3 text-sm font-medium text-gray-900 dark:text-blue-600">Dark Mode</span>
+  </label>
+ </div>
  <form onsubmit="return alert('you are subscribed!')" class="m-2 mx-auto text-center ">
   <label for="email" class="text-xl">Receive our newsletter
    <input type="email" name="email" placeholder="insert your email" class="border-2 rounded-lg p-1">
@@ -51,6 +61,12 @@
      class="w-40 p-2 mx-auto mt-4 block bg-green-400 hover:bg-green-500 hover:border-green-400 border-4 border-transparent text-white rounded-lg">ver
      flex</button></a>
   </div>
+  <div id="cards-responsives">
+   <h3 class="text-2xl">Grid CSS</h3>
+   <a href="./grid.html"><button
+     class="w-40 p-2 mx-auto mt-4 block bg-green-400 hover:bg-green-500 hover:border-green-400 border-4 border-transparent text-white rounded-lg">ver
+     Grid CSS</button></a>
+  </div>
  </div>
 
  <div id="cards" class="h-screen">
@@ -71,6 +87,22 @@
   }
   fetchAPImeme()
 
+
+  const $darkToggle = document.querySelector('#darkToggle');
+
+  const themeSaved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if (themeSaved === 'dark') {
+   document.documentElement.classList.add('dark');
+   $darkToggle.checked = true;
+  }
+  $darkToggle.addEventListener('click', () => {
+   document.documentElement.classList.toggle('dark');
+   if (document.documentElement.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark')
+   } else {
+    localStorage.setItem('theme', 'light')
+   }
+  });
  </script>
 
 </body>
